@@ -5,13 +5,13 @@ function validateCadastro() {
 
     if (!usuario.value) alert("Usuário em branco. Informe um usuário")
     else if (!senha.value) alert("Senha em branco. Informe uma senha")
-    else if (!confirmaSenha.value) alert("Confirmar senha em branco. Informe uma senha")
+    else if (!confirmaSenha.value) alert("Confirmar senha em branco. Confirme a senha")
     else if (confirmaSenha.value !== senha.value) alert("Senhas diferentes. Verifique")
     else recordNewUser(usuario.value, senha.value)
 }
 
 function recordNewUser(usuario, senha) {
-    file = "json/users.json"
+    file = "../json/users.json"
 
     fetch(file)
         .then(response => response.json())
@@ -19,7 +19,7 @@ function recordNewUser(usuario, senha) {
         .catch(err => alert("Problema na leitura do JSON!" + err))
 }
 
-function checkUserCadastro(content, user, password) {
+function checkUserCadastro(content, usuario, senha) {
     var achouUser = false;
     for (var i = 0; i < content.usuarios.length; i++) {
         if ((content.usuarios[i].user === usuario) && (content.usuarios[i].pwd === senha)) {
@@ -27,7 +27,6 @@ function checkUserCadastro(content, user, password) {
             break;
         }
     }
-
     if (achouUser) alert("Esse usuário já existe! Tente outro usuário")
     else {
         document.getElementsByTagName("form")[0].submit()

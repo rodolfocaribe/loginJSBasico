@@ -10,7 +10,7 @@ function validateLogin() {
 }
 
 function processLogin(usuario, senha) {
-    file = "json/users.json"
+    file = "../json/users.json"
 
     fetch(file)
         .then(response => response.json())
@@ -26,7 +26,6 @@ function checkUserLogin(content, usuario, senha) {
             break;
         }
     }
-
     if (achouUsuario) alert("Usuário existente")
     else alert("Usuário inexistente")
 }
