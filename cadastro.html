@@ -15,9 +15,9 @@
         <div>
             <h1>Cadastro</h1>
             <form method="post" action="php/cadastros.php">
-                <input type="text" placeholder="usuario" id="usuario"><br>
-                <input type="password" placeholder="senha" id="senha"><br>
-                <input type="password" placeholder="confirmaSenha" id="confirmaSenha"><br>
+                <input type="text" name="user" id="user" placeholder="usuário"><br>
+                <input type="password" name="pwd" id="senha" placeholder="senha"><br>
+                <input type="password" name="confPwd" id="confPwd" placeholder="Confirmar senha"><br>
                 <input type="button" value="Cadastrar" onclick="validateCadastro()">
             </form>
             <p>Já é cadastrado? <a href="login.html">Clique aqui!</a></p>

@@ -1,28 +1,27 @@
 function validateCadastro() {
-    usuario = document.getElementById("usuario")
-    senha = document.getElementById("senha")
-    confirmaSenha = document.getElementById("confirmaSenha")
+    user = document.getElementById("user")
+    pwd = document.getElementById("pwd")
+    confPwd = document.getElementById("confPwd")
 
-    if (!usuario.value) alert("Usuário em branco. Informe um usuário")
-    else if (!senha.value) alert("Senha em branco. Informe uma senha")
-    else if (!confirmaSenha.value) alert("Confirmar senha em branco. Confirme a senha")
-    else if (confirmaSenha.value !== senha.value) alert("Senhas diferentes. Verifique")
-    else recordNewUser(usuario.value, senha.value)
+    if (!user.value) alert("Usuário em branco. Informe um usuário")
+    else if (!pwd.value) alert("Senha em branco. Informe uma senha")
+    else if (!confPwd.value) alert("Confirmar senha em branco. Confirme a senha")
+    else if (confPwd.value !== pwd.value) alert("Senhas diferentes. Verifique")
+    else recordNewUser(user.value, pwd.value)
 }
 
-function recordNewUser(usuario, senha) {
-    file = "../json/users.json"
+function recordNewUser(user, pwd) {
+    file = "json/users.json"
 
     fetch(file)
         .then(response => response.json())
-        .then(content => checkUserCadastro(content, usuario, senha))
+        .then(content => checkUserCadastro(content, user, pwd))
         .catch(err => alert("Problema na leitura do JSON!" + err))
 }
-
-function checkUserCadastro(content, usuario, senha) {
+function checkUserCadastro(content, user, pwd) {
     var achouUser = false;
     for (var i = 0; i < content.usuarios.length; i++) {
-        if ((content.usuarios[i].user === usuario) && (content.usuarios[i].pwd === senha)) {
+        if ((content.usuarios[i].user === user) && (content.usuarios[i].pwd === pwd)) {
             achouUser = true;
             break;
         }
